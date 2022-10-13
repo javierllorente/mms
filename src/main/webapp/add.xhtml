@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Add Entry</title>
+        <h:outputStylesheet name="css/editor.css"/>
+    </h:head>
+    <h:body>
+        <h:messages id="messages" for="addForm"/>
+        <h:form id="addForm">
+            <table>
+                <tr>
+                    <td><div class="label">Term: </div></td>
+                    <td><div class="field"><h:inputText id="term" value="#{entryBean.entry.term}"/></div></td>
+                </tr>
+                <tr>
+                    <td>Definition: </td>
+                    <td><h:inputTextarea id="definition" value="#{entryBean.entry.definition}"/></td>
+                </tr>
+                <tr>
+                    <td>Translation: </td>
+                    <td><h:inputTextarea id="translation" value="#{entryBean.entry.translation}"/></td>
+                </tr>
+                <tr>
+                    <td>Context: </td>
+                    <td><h:inputTextarea id="context" value="#{entryBean.entry.context}"/></td>
+                </tr>
+                <tr>
+                    <td>Expert network: </td>
+                    <td><h:inputTextarea id="expertNetwork" value="#{entryBean.entry.expertNetwork}" /></td>
+                </tr>
+                <tr>
+                    <td>Resources: </td>
+                    <td><h:inputTextarea id="resources" value="#{entryBean.entry.resources}"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <div id="submitPane"><h:commandButton id="submitButton" value="Submit" action="#{entryBean.submit}" /></div>
+        </h:form>
+    </h:body>
+</html>
+

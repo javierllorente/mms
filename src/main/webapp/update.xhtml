@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <title>Update Entry</title>
+    </head>
+    <body>
+        <h:messages id="messages" for="updateForm"/>
+        <h:form id="updateForm">
+            <div class="row">Term: <h:inputText value="#{entryBean.entry.term}"/></div>
+            <div class="row">Definition: <h:inputTextarea value="#{entryBean.entry.definition}"/></div>
+            <div class="row">Translation: <h:inputTextarea value="#{entryBean.entry.translation}"/></div>
+            <div class="row">Context: <h:inputTextarea value="#{entryBean.entry.context}"/></div>
+            <div class="row">Expert network: <h:inputTextarea /></div>
+            <div class="row">Resources: <h:inputTextarea value="#{entryBean.entry.resources}"/></div>
+            <h:commandButton id="submitButton" value="Update" action="#{entryBean.update}" />
+        </h:form>
+    </body>
+</html>
+

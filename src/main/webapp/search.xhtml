@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>        
+        <title>Mind Map Search</title>
+        <h:outputStylesheet name="css/style.css"/>
+        <h:outputScript name="js/jquery/jquery.js"/> 
+        <h:outputScript name="js/jquery.connections.js"/> 
+        <h:outputScript name="js/search.js"/>
+        <f:metadata>
+            <f:viewParam name="query" value="#{searchBean.term}" />
+            <f:viewAction action="#{searchBean.onLoad()}" />
+        </f:metadata>
+    </h:head>
+    <h:body>
+        <div id="searchBox">
+            <h:form id="searchForm">
+                <h:inputText id="term" value="#{searchBean.term}" />
+                <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
+                    <f:param name="query" value="#{searchBean.term}" />
+                </h:commandButton>
+            </h:form>
+        </div>
+        <h:panelGroup id="results" layout="block">
+            <h:panelGroup rendered="#{not empty searchBean.term and not empty searchBean.results.term}">
+                <div class="sideColumn">
+                    <span id="definitionToggle" class="child">- Definition</span>
+                    <div id="definition"><h:outputText value="#{searchBean.results.definition}"/></div>
+                    <span id="translationToggle" class="child">+ Translation</span>
+                    <div id="translation"><h:outputText value="#{searchBean.results.translation}"/></div>
+                </div>
+                <div id="termColumn">
+                    <div id="termBox"><h:outputText value="#{searchBean.results.term}" /></div>
+                </div>
+                <div class="sideColumn">
+                    <span id="contextToggle" class="child">+ Context</span>
+                    <div id="context"><h:outputText value="#{searchBean.results.context}"/></div>
+                    <span id="expertNetworkToggle" class="child">+ Expert network</span>
+                    <div id="expertNetwork"><h:outputText value="#{searchBean.results.expertNetwork}"/></div>
+                    <span id="resourcesToggle" class="child">+ Resources</span>
+                    <div id="resources"><h:outputText value="#{searchBean.results.resources}" escape="false"/></div>
+                </div>
+            </h:panelGroup>
+            <h:panelGroup layout="block" rendered="#{not empty searchBean.term and empty searchBean.results.term}">
+                No results
+            </h:panelGroup>
+        </h:panelGroup>
+        <br/>
+        <div id="powered">Powered by MMS</div>
+    </h:body>
+</html>
+

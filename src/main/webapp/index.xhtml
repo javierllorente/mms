@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Mind Map Search</title>
+    </head>
+    <body>
+        <div style="display: flex; justify-content: center;">
+            <h:form id="searchForm">
+                MMS <h:inputText id="term" value="#{searchBean.term}" size="50"/>
+                <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
+                    <f:param name="query" value="#{searchBean.term}" />
+                </h:commandButton>
+            </h:form>
+        </div>
+    </body>
+</html>
+

@@ -11,7 +11,7 @@
             <h:outputScript name="js/jquery.connections.js"/> 
             <h:outputScript name="js/search.js"/>
             <f:metadata>
-                <f:viewParam name="query" value="#{searchBean.term}" />
+                <f:viewParam name="entry" value="#{searchBean.term}" />
                 <f:viewAction action="#{searchBean.onLoad()}" />
             </f:metadata>
         </h:head>
@@ -20,7 +20,7 @@
                 <h:form id="searchForm">
                     <h:inputText id="term" value="#{searchBean.term}" />
                     <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
-                        <f:param name="query" value="#{searchBean.term}" />
+                        <f:param name="entry" value="#{searchBean.term}" />
                     </h:commandButton>
                 </h:form>
             </div>

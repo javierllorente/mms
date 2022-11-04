@@ -20,6 +20,7 @@ import com.javierllorente.mms.service.EntryService;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import java.util.List;
 
 /**
  *
@@ -30,7 +31,7 @@ import jakarta.inject.Inject;
 public class SearchBean {
 
     private String term;
-    private Entry results;
+    private List<Entry> results;
 
     @Inject
     EntryService entryService;
@@ -49,17 +50,17 @@ public class SearchBean {
         this.term = term;
     }
 
-    public Entry getResults() {
+    public List<Entry> getResults() {
         return results;
     }
 
-    public void setResults(Entry results) {
+    public void setResults(List<Entry> results) {
         this.results = results;
     }
     
     public void onLoad() {
         if (term != null && !term.isBlank()) {
-            results = entryService.search(term);
+            results = entryService.findByFullText(term);
         }
     }
     

@@ -18,27 +18,57 @@ package com.javierllorente.mms.model;
 import jakarta.persistence.Column;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityResult;
+import jakarta.persistence.FieldResult;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.SqlResultSetMapping;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 /**
  *
  * @author Javier Llorente <javier@opensuse.org>
  */
 @Entity
+@NamedNativeQuery(name = Entry.FIND_BY_FULLTEXT, 
+        query = "SELECT * FROM ENTRY WHERE MATCH(TERM, DEFINITION, TRANSLATION, CONTEXT) "
+                + "AGAINST( ? IN NATURAL LANGUAGE MODE)", 
+        resultSetMapping = "FullTextResults")
+
+@SqlResultSetMapping(name = "FullTextResults",
+        entities = {
+            @EntityResult(entityClass = Entry.class, fields = {                
+                @FieldResult(name = "term", column = "TERM"),
+                @FieldResult(name = "translation", column = "\"TRANSLATION\""),
+                @FieldResult(name = "context", column = "CONTEXT")})
+        }
+)
+
 public class Entry implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public static final String FIND_BY_FULLTEXT = "findByFullText";
+    private static final int MIN_SIZE = 2;
+    private static final int MAX_SIZE = 1024;
   
     @Id
+    @NotNull
     private String term;
     
-    @Column(length = 500)
+    @NotNull
+    @Size(min = MIN_SIZE, max = MAX_SIZE)
+    @Column(length = MAX_SIZE)
     private String definition;
     
-    @Column(name = "\"TRANSLATION\"", length = 500)
+    @NotNull
+    @Size(min = MIN_SIZE, max = MAX_SIZE)
+    @Column(name = "\"TRANSLATION\"", length = MAX_SIZE)
     private String translation;
     
-    @Column(length = 500)
+    @NotNull
+    @Size(min = MIN_SIZE, max = MAX_SIZE)
+    @Column(length = MAX_SIZE)
     private String context;
     
     @Column(length = 500)

@@ -19,6 +19,7 @@ import com.javierllorente.mms.model.Entry;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  *
@@ -29,9 +30,6 @@ public class EntryService {
     
     @PersistenceContext(unitName = "production-unit")
     private EntityManager em;
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
     
     public void add(Entry entry) {
         em.persist(entry);
@@ -47,6 +45,11 @@ public class EntryService {
     
     public Entry search(String term) {
         return em.find(Entry.class, term);
+    }
+    
+    public List<Entry> findByFullText(String term) {
+        return em.createNamedQuery(Entry.FIND_BY_FULLTEXT, Entry.class)
+                .setParameter(1, term).getResultList();
     }
     
 }

@@ -43,7 +43,7 @@ public class EntryService {
         em.remove(entry);
     }
     
-    public Entry search(String term) {
+    public Entry find(String term) {
         return em.find(Entry.class, term);
     }
     

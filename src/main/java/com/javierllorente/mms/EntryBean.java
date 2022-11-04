@@ -54,7 +54,7 @@ public class EntryBean {
     public void submit() {
         String message;
 
-        if (entryService.search(entry.getTerm()) == null) {
+        if (entryService.find(entry.getTerm()) == null) {
             entryService.add(entry);
             message = "Entry added successfuly";
         } else {

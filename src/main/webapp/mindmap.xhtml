@@ -5,47 +5,49 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <f:view transient="true">
         <h:head>        
-            <title>Mind Map Search</title>
+            <title>Mind Map 
+                <h:outputText value="for #{mindMapBean.entry.term}"
+                    rendered="#{not empty mindMapBean.term and not empty mindMapBean.entry.term}" /></title>
             <h:outputStylesheet name="css/style.css"/>
             <h:outputScript name="js/jquery/jquery.js"/> 
             <h:outputScript name="js/jquery.connections.js"/> 
-            <h:outputScript name="js/search.js"/>
+            <h:outputScript name="js/mindmap.js"/>
             <f:metadata>
-                <f:viewParam name="entry" value="#{searchBean.term}" />
-                <f:viewAction action="#{searchBean.onLoad()}" />
+                <f:viewParam name="entry" value="#{mindMapBean.term}" />
+                <f:viewAction action="#{mindMapBean.onLoad()}" />
             </f:metadata>
         </h:head>
         <h:body>
             <div id="searchBox">
                 <h:form id="searchForm">
-                    <h:inputText id="term" value="#{searchBean.term}" />
-                    <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
-                        <f:param name="entry" value="#{searchBean.term}" />
+                    <h:inputText id="term" value="#{mindMapBean.term}" />
+                    <h:commandButton id="searchButton" value="Search" action="#{mindMapBean.search()}">
+                        <f:param name="entry" value="#{mindMapBean.term}" />
                     </h:commandButton>
                 </h:form>
             </div>
-            <h:panelGroup id="results" layout="block">
-                <h:panelGroup rendered="#{not empty searchBean.term and not empty searchBean.results.term}">
+            <h:panelGroup id="entry" layout="block">
+                <h:panelGroup rendered="#{not empty mindMapBean.term and not empty mindMapBean.entry.term}">
                     <div class="sideColumn">
                         <span id="definitionToggle" class="child">- Definition</span>
-                        <div id="definition"><h:outputText value="#{searchBean.results.definition}"/></div>
+                        <div id="definition"><h:outputText value="#{mindMapBean.entry.definition}"/></div>
                         <span id="translationToggle" class="child">+ Translation</span>
-                        <div id="translation"><h:outputText value="#{searchBean.results.translation}"/></div>
+                        <div id="translation"><h:outputText value="#{mindMapBean.entry.translation}"/></div>
                     </div>
                     <div id="termColumn">
-                        <div id="termBox"><h:outputText value="#{searchBean.results.term}" /></div>
+                        <div id="termBox"><h:outputText value="#{mindMapBean.entry.term}" /></div>
                     </div>
                     <div class="sideColumn">
                         <span id="contextToggle" class="child">+ Context</span>
-                        <div id="context"><h:outputText value="#{searchBean.results.context}"/></div>
+                        <div id="context"><h:outputText value="#{mindMapBean.entry.context}"/></div>
                         <span id="expertNetworkToggle" class="child">+ Expert network</span>
-                        <div id="expertNetwork"><h:outputText value="#{searchBean.results.expertNetwork}"/></div>
+                        <div id="expertNetwork"><h:outputText value="#{mindMapBean.entry.expertNetwork}"/></div>
                         <span id="resourcesToggle" class="child">+ Resources</span>
-                        <div id="resources"><h:outputText value="#{searchBean.results.resources}" escape="false"/></div>
+                        <div id="resources"><h:outputText value="#{mindMapBean.entry.resources}" escape="false"/></div>
                     </div>
                 </h:panelGroup>
-                <h:panelGroup layout="block" rendered="#{not empty searchBean.term and empty searchBean.results.term}">
-                    No results
+                <h:panelGroup layout="block" rendered="#{not empty mindMapBean.term and empty mindMapBean.entry.term}">
+                    Entry not found
                 </h:panelGroup>
             </h:panelGroup>
             <br/>

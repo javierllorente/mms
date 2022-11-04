@@ -56,9 +56,9 @@ public class EntryBean {
 
         if (entryService.search(entry.getTerm()) == null) {
             entryService.add(entry);
-            message = "Entry added";
+            message = "Entry added successfuly";
         } else {
-            message = "Entry already in the DB";
+            message = "Entry for " + entry.getTerm() + " already exists in the database";
         }
         
         FacesContext.getCurrentInstance().addMessage("addForm", new FacesMessage(message));

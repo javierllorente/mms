@@ -18,6 +18,15 @@ body {
     margin-left: 5px;
 }
 
+#resultsHeader {
+    margin-bottom: 10px;
+}
+
+#results {
+    margin-top: 25px;
+    display: table;
+}
+
 #entry {
     margin-top: 25px;
     display: table;

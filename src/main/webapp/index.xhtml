@@ -3,18 +3,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <head>
-        <title>Mind Map Search</title>
-    </head>
-    <body>
-        <div style="display: flex; justify-content: center;">
-            <h:form id="searchForm">
-                MMS <h:inputText id="term" value="#{searchBean.term}" size="50"/>
-                <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
-                    <f:param name="query" value="#{searchBean.term}" />
-                </h:commandButton>
-            </h:form>
-        </div>
-    </body>
+    <f:view transient="true">
+        <head>
+            <title>Mind Map Search</title>
+        </head>
+        <body>
+            <div style="display: flex; justify-content: center;">
+                <h:form id="searchForm">
+                    MMS <h:inputText id="term" value="#{searchBean.term}" size="50"/>
+                    <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
+                        <f:param name="query" value="#{searchBean.term}" />
+                    </h:commandButton>
+                </h:form>
+            </div>
+        </body>
+    </f:view>
 </html>
 

@@ -20,9 +20,9 @@
         <h:body>
             <div id="searchBox">
                 <h:form id="searchForm">
-                    <h:inputText id="term" value="#{mindMapBean.term}" />
-                    <h:commandButton id="searchButton" value="Search" action="#{mindMapBean.search()}">
-                        <f:param name="entry" value="#{mindMapBean.term}" />
+                    <h:inputText id="term" value="#{searchBean.term}" />
+                    <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
+                        <f:param name="query" value="#{searchBean.term}" />
                     </h:commandButton>
                 </h:form>
             </div>

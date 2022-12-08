@@ -19,6 +19,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
+import java.security.Principal;
 
 /**
  *
@@ -40,7 +41,8 @@ public class UserBean {
     @PostConstruct
     public void init() {
         FacesContext context = FacesContext.getCurrentInstance();
-        currentUser = context.getExternalContext().getUserPrincipal().getName();
+        Principal principal = context.getExternalContext().getUserPrincipal();
+        currentUser = (principal == null) ? "" : principal.getName();
     }
     
     public String getCurrentUser() {

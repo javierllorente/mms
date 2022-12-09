@@ -22,12 +22,23 @@
                 </h:form>
             </div>
             <h:panelGroup id="results" layout="block">
+                <div id="resultsHeader"><h:outputText value="#{searchBean.results.size()}" /> results</div>
                 <h:panelGroup rendered="#{not empty searchBean.term and not empty searchBean.results}">
-                    <h:dataTable value="#{searchBean.results}" var="entry">
+                    <h:dataTable id="resultsTable" value="#{searchBean.results}" var="entry">
                         <h:column>
                             <h:link value="#{entry.term}" outcome="mindmap">
                                 <f:param name="entry" value="#{entry.term}" />
                             </h:link>
+                        </h:column>
+                        <h:column>
+                            <h:outputText value="#{entry.definition.length() gt 80 
+                                                   ? entry.definition.substring(0, 77).concat('...') 
+                                                   : entry.definition}" />
+                        </h:column>
+                        <h:column>
+                            <h:outputText value="#{entry.context.length() gt 80 
+                                                   ? entry.context.substring(0, 77).concat('...') 
+                                                   : entry.context}" />
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>

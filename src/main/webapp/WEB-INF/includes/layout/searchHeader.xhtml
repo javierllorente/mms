@@ -1,0 +1,13 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <div id="searchBox">
+        <h:form id="searchForm">
+            <span id="searchLogo">MMS</span> <h:inputText id="searchInput" value="#{searchBean.term}" />
+            <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
+                <f:param name="query" value="#{searchBean.term}" />
+            </h:commandButton>
+        </h:form>
+    </div>
+</ui:composition>

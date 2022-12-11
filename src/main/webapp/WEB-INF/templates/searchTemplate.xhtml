@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view transient="true">
+        <h:head>
+            <title><ui:insert name="title" /></title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <h:outputStylesheet name="css/style.css" />
+            <ui:insert name="scripts" />
+            <ui:insert name="metadata" />
+        </h:head>
+        <h:body>
+            <header>
+                <ui:insert name="top">
+                    <ui:include src="../includes/layout/searchHeader.xhtml" />
+                </ui:insert>
+            </header>
+            <main>
+                <ui:insert name="content" />
+            </main>
+            <footer>
+                <ui:insert name="bottom">
+                    <ui:include src="../includes/layout/footer.xhtml" />
+                </ui:insert>
+            </footer>
+        </h:body>
+    </f:view>
+</html>

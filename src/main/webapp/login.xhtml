@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>MMS - Sign in</title>
+        <h:outputStylesheet name="css/style.css" />
+    </h:head>
+    <body>
+        <div id="loginTop"></div>
+        <div id="loginHeader">MMS</div>
+        <div id="loginBox">
+            <form action="j_security_check" method="post">
+                <fieldset>
+                    <div id="usernameField" class="field">
+                        <h:outputLabel id="usernameLabel" styleClass="label" for="j_username" value="Username" />
+                        <h:inputText id="j_username" a:autofocus="true" />
+                    </div>
+                    <br />
+                    <div id="passwordField" class="field">
+                        <h:outputLabel id="passwordLabel" styleClass="label" for="j_password" value="Password" />
+                        <h:inputSecret id="j_password" />
+                    </div>
+                    <br />
+                    <h:commandButton id="loginButton" value="Login" />
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>
+

@@ -36,7 +36,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Editor pages</web-resource-name>
-            <!--<url-pattern>/add.xhtml</url-pattern>-->
+            <url-pattern>/add.xhtml</url-pattern>
             <url-pattern>/update.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
@@ -48,8 +48,7 @@
     </security-role>-->
     <login-config>
         <auth-method>FORM</auth-method>
-        <!--<realm-name>file</realm-name>-->
-        <realm-name>jdbcRealm</realm-name>
+        <realm-name>JDBCRealm</realm-name>
         <form-login-config>
             <form-login-page>/login.xhtml</form-login-page>
             <form-error-page>/loginerror.xhtml</form-error-page>

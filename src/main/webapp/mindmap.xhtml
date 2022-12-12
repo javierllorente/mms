@@ -8,8 +8,8 @@
                                rendered="#{not empty mindMapBean.term and not empty mindMapBean.entry.term}" />
     </ui:define>
     <ui:define name="scripts">
-        <h:outputScript name="js/jquery/jquery.js"/> 
-        <h:outputScript name="js/jquery.connections.js"/> 
+        <h:outputScript library="webjars" name="jquery/3.6.1/dist/jquery.js" />
+        <h:outputScript library="webjars" name="github-com-slavede-jquery-connections/1.1.1/jquery.connections.js" />
         <h:outputScript name="js/mindmap.js"/>
     </ui:define>
     <ui:define name="metadata">

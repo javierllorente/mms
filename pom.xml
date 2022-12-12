@@ -16,6 +16,26 @@
         <jakartaee>9.1.0</jakartaee>
     </properties>
     
+    <developers>
+        <developer>
+            <name>Javier Llorente</name>
+            <email>javier@opensuse.org</email>
+        </developer>
+    </developers>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:git@github.com:javierllorente/mms.git</connection>
+        <developerConnection>scm:git:git@github.com:javierllorente/mms.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/javierllorente/mms</url>
+    </scm>
+    
     <dependencies>
         <dependency>
             <groupId>jakarta.platform</groupId>

@@ -121,8 +121,31 @@ body {
 
 /* Mindmap */
 
+#contentContainer {
+    width: 1050px;
+    margin-top: 20px;
+}
+
+#contentContainer #actionPanel {
+    width: 800px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: right;
+}
+
+#actionPanel a:link, a:visited {
+    background-color: #ebebeb;
+    color: #525252;
+    text-decoration: none;
+    padding: 4px 8px 4px 8px;
+    border-radius: 5px;
+}
+
+#actionPanel a:hover {
+    color: black;
+}
+
 #entry {
-    margin-top: 40px;
     display: table;
 }
 

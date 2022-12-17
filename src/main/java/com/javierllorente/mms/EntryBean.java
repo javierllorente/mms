@@ -36,8 +36,9 @@ public class EntryBean {
     private EntryService entryService;
 
     private Entry entry;
+    private String term;
     /**
-     * Creates a new instance of EntryManager
+     * Creates a new instance of EntryBean
      */
     public EntryBean() {
     }
@@ -47,8 +48,26 @@ public class EntryBean {
         entry = new Entry();
     }
     
+    public void onLoad() {
+        if (term != null && !term.isBlank()) {
+            entry = entryService.find(term);
+
+            if (entry == null) {
+                addMessage("Entry " + term + " not found");
+            }
+        }
+    }
+    
     public Entry getEntry() {
         return entry;
+    }
+    
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
     }
     
     public void submit() {

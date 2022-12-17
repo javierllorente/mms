@@ -1,55 +1,16 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./WEB-INF/templates/userTemplate.xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:m="http://javierllorente.com/mms/tags">
     <ui:define name="title">- Add entry</ui:define>
     <ui:define name="content">
-        <h:messages id="formMessages" for="addForm" />
+        <h:messages id="formMessages" for="entryForm" />
         <h:panelGroup id="container" layout="block">
             <h:panelGroup rendered="#{not empty entryBean.entry.term}">
                 <h:link value="Add another entry" outcome="add" />
             </h:panelGroup>
         </h:panelGroup>
-        <h:form id="addForm" rendered="#{empty entryBean.entry.term}">
-            <table>
-                <tr>
-                    <td><div class="label">Term: </div></td>
-                    <td>
-                        <div class="field"><h:inputText id="searchInput" value="#{entryBean.entry.term}"/></div>
-                        <h:message id="termMessages" for="addForm:term" styleClass="addFormError" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Definition: </td>
-                    <td>
-                        <h:inputTextarea id="definition" value="#{entryBean.entry.definition}"/>
-                        <h:message id="definitionMessages" for="addForm:definition" styleClass="addFormError" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Translation: </td>
-                    <td>
-                        <h:inputTextarea id="translation"  value="#{entryBean.entry.translation}"/>
-                        <h:message id="translationMessages" for="addForm:translation" styleClass="addFormError" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Context: </td>
-                    <td>
-                        <h:inputTextarea id="context" value="#{entryBean.entry.context}"/>
-                        <h:message id="contextMessages" for="addForm:context" styleClass="addFormError" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Expert network: </td>
-                    <td><h:inputTextarea id="expertNetwork" value="#{entryBean.entry.expertNetwork}" /></td>
-                </tr>
-                <tr>
-                    <td>Resources: </td>
-                    <td><h:inputTextarea id="resources" value="#{entryBean.entry.resources}"/></td>
-                </tr>
-            </table>
-            <div id="submitPane"><h:commandButton id="submitButton" value="Submit" action="#{entryBean.submit}" /></div>
-        </h:form>
+        <m:form id="entryForm" bean="#{entryBean}" action="add" rendered="#{empty entryBean.entry.term}" />
     </ui:define>
 </ui:composition>

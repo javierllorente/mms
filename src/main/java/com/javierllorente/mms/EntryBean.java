@@ -19,18 +19,19 @@ import com.javierllorente.mms.model.Entry;
 import com.javierllorente.mms.service.EntryService;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
+import java.io.Serializable;
 
 /**
  *
  * @author Javier Llorente <javier@opensuse.org>
  */
 @Named(value = "entryBean")
-@RequestScoped
-public class EntryBean {
+@ViewScoped
+public class EntryBean implements Serializable {
     
     @Inject
     private EntryService entryService;
@@ -51,7 +52,7 @@ public class EntryBean {
     public void onLoad() {
         if (term != null && !term.isBlank()) {
             entry = entryService.find(term);
-
+            
             if (entry == null) {
                 addMessage("Entry " + term + " not found");
             }
@@ -69,7 +70,7 @@ public class EntryBean {
     public void setTerm(String term) {
         this.term = term;
     }
-    
+
     public void add() {
         String message;
 

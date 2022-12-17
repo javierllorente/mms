@@ -41,7 +41,7 @@
         <web-resource-collection>
             <web-resource-name>Editor pages</web-resource-name>
             <url-pattern>/add.xhtml</url-pattern>
-            <url-pattern>/update.xhtml</url-pattern>
+            <url-pattern>/edit.xhtml</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>

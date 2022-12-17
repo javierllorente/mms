@@ -70,7 +70,7 @@ public class EntryBean {
         this.term = term;
     }
     
-    public void submit() {
+    public void add() {
         String message;
 
         if (entryService.find(entry.getTerm()) == null) {

@@ -44,7 +44,6 @@ public class EntryBean implements Serializable {
     public EntryBean() {
     }
     
-    @PostConstruct
     public void init() {
         entry = new Entry();
     }

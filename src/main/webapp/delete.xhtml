@@ -16,7 +16,7 @@
         <h:messages id="formMessages" for="entryForm" />        
         <h:panelGroup id="container" layout="block">
             <h:panelGroup rendered="#{not empty entryBean.entry.term}">
-                Are you sure you want to delete #{entryBean.term}?
+                Are you sure you want to delete "#{entryBean.term}"?
                 <h:form id="entryForm">
                     <h:commandLink id="deleteYes" value="Yes" action="#{entryBean.delete}" />
                 </h:form>

@@ -52,7 +52,7 @@ public class EntryBean implements Serializable {
             entry = entryService.find(term);
             
             if (entry == null) {
-                addMessage("Entry " + term + " not found");
+                addMessage("Entry \"" + term + "\" not found");
             }
         }
     }
@@ -74,7 +74,7 @@ public class EntryBean implements Serializable {
 
         if (entryService.find(entry.getTerm()) == null) {
             entryService.add(entry);
-            message = "Entry added successfuly";
+            message = "Entry \"" + entry.getTerm() + "\" added successfuly";
         } else {
             message = "Entry for \"" + entry.getTerm() + "\" already exists in the database";
         }
@@ -85,12 +85,12 @@ public class EntryBean implements Serializable {
     public void update() {
         // By default, if entry is not found, it is addded!
         entryService.update(entry);
-        addMessage("Entry updated");
+        addMessage("Entry \"" + entry.getTerm() + "\" updated");
     }
     
     public void delete() {
         entryService.remove(entry);
-        addMessage("Entry " + entry.getTerm() + " deleted");
+        addMessage("Entry \"" + entry.getTerm() + "\" deleted");
         entry.setTerm(null);
     }
 

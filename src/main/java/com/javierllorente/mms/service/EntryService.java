@@ -40,6 +40,9 @@ public class EntryService {
     }
     
     public void remove(Entry entry) {
+        if (!em.contains(entry)) {
+            entry = em.merge(entry);
+        }
         em.remove(entry);
     }
     

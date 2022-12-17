@@ -8,7 +8,7 @@
         <h:messages id="formMessages" for="entryForm" />
         <h:panelGroup id="container" layout="block">
             <h:panelGroup rendered="#{not empty entryBean.entry.term}">
-                <h:link value="Add another entry" outcome="add" />
+                <h:link value="Add another entry" />
             </h:panelGroup>
         </h:panelGroup>
         <m:form id="entryForm" bean="#{entryBean}" action="add" rendered="#{empty entryBean.entry.term}" />

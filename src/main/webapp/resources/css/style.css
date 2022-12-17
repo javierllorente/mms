@@ -348,7 +348,7 @@ connection {
     font-size: 14px;
 }
 
-#submitPane {
+#submitPanel {
     width: 660px;
     display: flex;
     justify-content: flex-end;

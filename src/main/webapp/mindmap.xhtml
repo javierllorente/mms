@@ -20,12 +20,12 @@
     </ui:define>
     <ui:define name="content">
         <h:panelGroup id="contentContainer" layout="block">
-            <h:panelGroup id="actionPanel" layout="block">
-                <h:link value="Edit" outcome="edit">
-                    <f:param name="entry" value="#{mindMapBean.entry.term}" />
-                </h:link>
-            </h:panelGroup>
             <h:panelGroup id="entryContainer" rendered="#{not empty mindMapBean.term and not empty mindMapBean.entry.term}">
+                <h:panelGroup id="actionPanel" layout="block">
+                    <h:link value="Edit" outcome="edit">
+                        <f:param name="entry" value="#{mindMapBean.entry.term}" />
+                    </h:link>
+                </h:panelGroup>
                 <h:panelGroup id="entry">
                     <div class="sideColumn">
                         <span id="definitionToggle" class="child">- Definition</span>

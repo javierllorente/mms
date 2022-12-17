@@ -1,0 +1,53 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:param name="param" value="#{bean}" />
+    <ui:param name="method" value="#{action}" />
+    <h:form id="#{id}" rendered="#{empty rendered ? true : rendered}">
+        <table>
+            <tr>
+                <td>Term:</td>
+                <td>
+                    <h:inputText id="term" value="#{bean.entry.term}" 
+                                 readonly="#{action eq 'update'}" />
+                    <h:message id="termMessage" for="#{id}:term" styleClass="error" />
+                </td>
+            </tr>
+            <tr>
+                <td>Definition: </td>
+                <td>
+                    <h:inputTextarea id="definition" value="#{bean.entry.definition}"/>
+                    <h:message id="definitionMessage" for="#{id}:definition" styleClass="error" />
+                </td>
+            </tr>
+            <tr>
+                <td>Translation: </td>
+                <td>
+                    <h:inputTextarea id="translation"  value="#{bean.entry.translation}"/>
+                    <h:message id="translationMessage" for="#{id}:translation" styleClass="error" />
+                </td>
+            </tr>
+            <tr>
+                <td>Context: </td>
+                <td>
+                    <h:inputTextarea id="context" value="#{bean.entry.context}"/>
+                    <h:message id="contextMessage" for="#{id}:context" styleClass="error" />
+                </td>
+            </tr>
+            <tr>
+                <td>Expert network: </td>
+                <td>
+                    <h:inputTextarea id="expertNetwork" value="#{bean.entry.expertNetwork}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Resources: </td>
+                <td>
+                    <h:inputTextarea id="resources" value="#{bean.entry.resources}" />
+                </td>
+            </tr>
+        </table>
+        <div id="submitPane">
+            <h:commandButton id="submitButton" value="Submit" action="#{param[method]}" />
+        </div>
+    </h:form>    
+</ui:composition>

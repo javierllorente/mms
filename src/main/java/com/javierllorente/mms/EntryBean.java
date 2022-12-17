@@ -46,7 +46,7 @@ public class EntryBean {
     public void init() {
         entry = new Entry();
     }
-
+    
     public Entry getEntry() {
         return entry;
     }
@@ -61,13 +61,17 @@ public class EntryBean {
             message = "Entry for \"" + entry.getTerm() + "\" already exists in the database";
         }
         
-        FacesContext.getCurrentInstance().addMessage("addForm", new FacesMessage(message));
+        addMessage(message);
     }
     
     public void update() {
         // By default, if entry is not found, it is addded!
         entryService.update(entry);
-        FacesContext.getCurrentInstance().addMessage("updateForm", new FacesMessage("Entry updated"));
+        addMessage("Entry updated");
+    }
+
+    private void addMessage(String message) {
+        FacesContext.getCurrentInstance().addMessage("entryForm", new FacesMessage(message));
     }
     
 }

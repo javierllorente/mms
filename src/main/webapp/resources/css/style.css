@@ -144,6 +144,7 @@ body {
     text-decoration: none;
     padding: 4px 8px 4px 8px;
     border-radius: 5px;
+    margin-right: 5px;
 }
 
 #actionPanel a:hover {

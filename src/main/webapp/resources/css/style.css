@@ -124,6 +124,11 @@ body {
 #contentContainer {
     width: 1050px;
     margin-top: 20px;
+    margin-left: 20px;
+}
+
+#contentContainer #notFound {
+    margin-top: 40px;
 }
 
 #contentContainer #actionPanel {

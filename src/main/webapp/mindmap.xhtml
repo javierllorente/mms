@@ -46,8 +46,9 @@
                     </div>
                 </h:panelGroup>
             </h:panelGroup>
-            <h:panelGroup layout="block" rendered="#{not empty mindMapBean.term and empty mindMapBean.entry.term}">
-                Entry not found
+            <h:panelGroup id="notFoundContainer" layout="block" 
+                          rendered="#{not empty mindMapBean.term and empty mindMapBean.entry.term}">
+                <h:panelGroup id="notFound" layout="block">Entry not found</h:panelGroup>
             </h:panelGroup>
         </h:panelGroup>
     </ui:define>

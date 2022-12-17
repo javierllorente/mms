@@ -366,3 +366,31 @@ connection {
     display: block;
     margin-bottom: 2px;
 }
+
+/* Delete page */
+
+#deletePanel {
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+#deletePanel #deleteQuestion {
+    margin-right: 20px;
+}
+
+#deletePanel #entryForm {
+    display: inline;
+}
+
+#deletePanel a:link, a:visited {
+    background-color: #ebebeb;
+    color: #525252;
+    text-decoration: none;
+    padding: 4px 8px 4px 8px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+#deletePanel a:hover {
+    color: black;
+}

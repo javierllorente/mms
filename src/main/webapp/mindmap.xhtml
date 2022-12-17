@@ -27,6 +27,10 @@
                         <i class="fa-solid fa-pen-to-square"></i> Edit
                         <f:param name="entry" value="#{mindMapBean.entry.term}" />
                     </h:link>
+                    <h:link outcome="delete">
+                        <i class="fa-solid fa-trash"></i> Delete
+                        <f:param name="entry" value="#{mindMapBean.entry.term}" />
+                    </h:link>
                 </h:panelGroup>
                 <h:panelGroup id="entry">
                     <div class="sideColumn">

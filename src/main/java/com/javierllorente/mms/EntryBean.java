@@ -89,6 +89,12 @@ public class EntryBean implements Serializable {
         entryService.update(entry);
         addMessage("Entry updated");
     }
+    
+    public void delete() {
+        entryService.remove(entry);
+        addMessage("Entry " + entry.getTerm() + " deleted");
+        entry.setTerm(null);
+    }
 
     private void addMessage(String message) {
         FacesContext.getCurrentInstance().addMessage("entryForm", new FacesMessage(message));

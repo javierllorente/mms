@@ -17,7 +17,6 @@ package com.javierllorente.mms;
 
 import com.javierllorente.mms.model.Entry;
 import com.javierllorente.mms.service.EntryService;
-import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;

@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/userTemplate.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:define name="title">- Delete entry</ui:define>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam id="entryParam" name="entry" value="#{entryBean.term}" 
+                         required="true" requiredMessage="No entry given to delete!" />
+            <f:viewAction action="#{entryBean.onLoad()}" />
+        </f:metadata>
+    </ui:define>
+    <ui:define name="content">
+        <h:messages id="paramMessages" for="entryParam" />
+        <h:messages id="formMessages" for="entryForm" />        
+        <h:panelGroup id="container" layout="block">
+            <h:panelGroup rendered="#{not empty entryBean.entry.term}">
+                Are you sure you want to delete #{entryBean.term}?
+                <h:form id="entryForm">
+                    <h:commandLink id="deleteYes" value="Yes" action="#{entryBean.delete}" />
+                </h:form>
+                <h:link value="No" outcome="mindmap">
+                    <f:param name="entry" value="#{entryBean.entry.term}" />
+                </h:link>
+            </h:panelGroup>
+        </h:panelGroup>
+    </ui:define>
+</ui:composition>

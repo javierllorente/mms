@@ -289,27 +289,31 @@ connection {
 }
 
 
-/* Add entry page */
+/* Add/edit entry page */
 
-#addForm {
+#entryForm {
     width: 800px;
 }
 
-#addForm table {
+#entryForm table {
     border-spacing: 0 10px;
     width: 100%;
 }
 
-#addForm td {
+#entryForm td {
     vertical-align: top;
 }
 
-#addForm input[type=text] {
+#entryForm input[type=text] {
     width: 400px;
     font-size: 14px;
 }
 
-#addForm textarea {
+#entryForm input[readonly]{
+    background-color: #ededed;
+}
+
+#entryForm textarea {
     width: 500px;
     height: 200px;
     display: block;
@@ -317,18 +321,19 @@ connection {
 }
 
 #submitPane {
-    margin-top: 10px;
     width: 660px;
     display: flex;
     justify-content: flex-end;
 }
 
-#addForm\:submitButton {
+#entryForm\:submitButton {
     font-size: 16px;
     padding-left: 20px;
     padding-right: 20px;
 }
 
-.addFormError {
+#entryForm .error {
     color: red;
+    display: block;
+    margin-bottom: 2px;
 }

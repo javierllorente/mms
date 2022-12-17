@@ -28,6 +28,10 @@
         <param-name>jakarta.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
         <param-value>true</param-value>
     </context-param>
+    <context-param>
+        <param-name>jakarta.faces.FACELETS_LIBRARIES</param-name>
+        <param-value>/WEB-INF/mms.taglib.xml</param-value>
+    </context-param>
     <error-page>
         <exception-type>jakarta.faces.application.ViewExpiredException</exception-type>
         <!--<location>/errorpages/expired.xhtml</location>-->

@@ -37,8 +37,8 @@
     </tag>
     <tag>
         <description>Mind map</description>
-        <tag-name>mindmap</tag-name>
-        <source>tags/mindmap.xhtml</source>
+        <tag-name>mindMap</tag-name>
+        <source>tags/mindMap.xhtml</source>
         <attribute>
             <description>Mind map ID</description>
             <name>id</name>

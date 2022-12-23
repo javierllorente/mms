@@ -30,7 +30,7 @@
                         <f:param name="entry" value="#{mindMapBean.entry.term}" />
                     </h:link>
                 </h:panelGroup>
-                <m:mindmap id="entry" value="#{mindMapBean.entry}" />
+                <m:mindMap id="entry" value="#{mindMapBean.entry}" />
             </h:panelGroup>
             <h:panelGroup id="notFoundContainer" layout="block" 
                           rendered="#{not empty mindMapBean.term and empty mindMapBean.entry.term}">

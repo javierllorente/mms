@@ -1,0 +1,25 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:outputScript library="webjars" name="jquery/3.6.1/dist/jquery.js" target="head" />
+    <h:outputScript library="webjars" name="github-com-slavede-jquery-connections/1.1.1/jquery.connections.js" target="head" />
+    <h:outputScript name="js/mindmap.js" target="head" />
+    <h:panelGroup id="#{id}">
+        <div class="sideColumn">
+            <span id="definitionToggle" class="child">- Definition</span>
+            <div id="definition"><h:outputText value="#{value.definition}" /></div>
+            <span id="translationToggle" class="child">+ Translation</span>
+            <div id="translation"><h:outputText value="#{value.translation}" /></div>
+        </div>
+        <div id="termColumn">
+            <div id="termBox"><h:outputText value="#{value.term}" /></div>
+        </div>
+        <div class="sideColumn">
+            <span id="contextToggle" class="child">+ Context</span>
+            <div id="context"><h:outputText value="#{value.context}" /></div>
+            <span id="expertNetworkToggle" class="child">+ Expert network</span>
+            <div id="expertNetwork"><h:outputText value="#{value.expertNetwork}" /></div>
+            <span id="resourcesToggle" class="child">+ Resources</span>
+            <div id="resources"><h:outputText value="#{value.resources}" escape="false" /></div>
+        </div>
+    </h:panelGroup>
+</ui:composition>

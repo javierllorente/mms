@@ -35,5 +35,22 @@
             <type>java.lang.Boolean</type>
         </attribute>
     </tag>
+    <tag>
+        <description>Mind map</description>
+        <tag-name>mindmap</tag-name>
+        <source>tags/mindmap.xhtml</source>
+        <attribute>
+            <description>Mind map ID</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>Mind map data model</description>
+            <name>value</name>
+            <required>true</required>
+            <type>com.​javierllorente.​mms.​model.Entry</type>
+        </attribute>
+    </tag>
 </facelet-taglib>
 

@@ -321,7 +321,7 @@ connection {
 /* Add/edit entry page */
 
 #entryForm {
-    width: 800px;
+    width: 825px;
 }
 
 #entryForm table {
@@ -329,8 +329,20 @@ connection {
     width: 100%;
 }
 
-#entryForm td {
+#entryForm table td {
     vertical-align: top;
+}
+
+#entryForm table tr td:first-child {
+    width: 150px;
+}
+
+#entryForm table tr:first-child td:first-child {
+    vertical-align: middle;
+}
+
+#entryForm table tr:not(:first-child) td:first-child {
+    padding-top: 12px;
 }
 
 #entryForm input[type=text] {
@@ -350,7 +362,7 @@ connection {
 }
 
 #submitPanel {
-    width: 660px;
+    width: 825px;
     display: flex;
     justify-content: flex-end;
 }

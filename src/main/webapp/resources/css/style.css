@@ -225,6 +225,10 @@ connection {
     font-size: 14px;
 }
 
+#copyright a:link, a:visited {
+    color: inherit;
+}
+
 
 /* Login page */
 

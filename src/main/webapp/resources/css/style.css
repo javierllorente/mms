@@ -156,17 +156,24 @@ body {
 }
 
 #entry .sideColumn {
-    width: 375px;
+    width: 325px;
 }
 
 #entry #termColumn {
-    width: 300px;
+    width: 375px;
     display: table-cell;
 }
 
+#entry #termContainer {
+    display: flex;
+    justify-content: start;
+    margin-left: 35px;
+}
+
 #termBox {
-    width: 100px;
-    height: 40px;
+    min-width: 100px;
+    max-width: 250px;
+    max-height: 100px;
     background-color: green;
     color: white;
     font-weight: bold;
@@ -174,6 +181,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
 }
 
 #definitionToggle, #translationToggle, #contextToggle, #expertNetworkToggle, #resourcesToggle {

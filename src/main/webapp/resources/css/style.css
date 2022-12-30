@@ -173,7 +173,7 @@ body {
 #termBox {
     min-width: 100px;
     max-width: 200px;
-    max-height: 100px;
+    max-height: 55px;
     background-color: green;
     color: white;
     font-weight: bold;

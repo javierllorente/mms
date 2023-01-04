@@ -16,34 +16,44 @@
             <tr>
                 <td>Definition: </td>
                 <td>
-                    <m:textEditor id="definition" value="#{bean.entry.definition}" />
+                    <m:textEditor id="definition" 
+                                  value="#{bean.entry.htmlData.definition}"
+                                  textValue="#{bean.entry.definition}" />
                     <h:message id="definitionMessage" for="#{id}:definition_html" styleClass="error" />
                 </td>
             </tr>
             <tr>
                 <td>Translation: </td>
                 <td>
-                    <m:textEditor id="translation" value="#{bean.entry.translation}" />
+                    <m:textEditor id="translation" 
+                                  value="#{bean.entry.htmlData.translation}"
+                                  textValue="#{bean.entry.translation}" />
                     <h:message id="translationMessage" for="#{id}:translation_html" styleClass="error" />
                 </td>
             </tr>
             <tr>
                 <td>Context: </td>
                 <td>
-                    <m:textEditor id="context" value="#{bean.entry.context}" />
+                    <m:textEditor id="context" 
+                                  value="#{bean.entry.htmlData.context}"
+                                  textValue="#{bean.entry.context}" />
                     <h:message id="contextMessage" for="#{id}:context_html" styleClass="error" />
                 </td>
             </tr>
             <tr>
                 <td>Expert network: </td>
                 <td>
-                    <m:textEditor id="expertNetwork" value="#{bean.entry.expertNetwork}" />
+                    <m:textEditor id="expertNetwork" 
+                                  value="#{bean.entry.htmlData.expertNetwork}"
+                                  textValue="#{bean.entry.expertNetwork}" />
                 </td>
             </tr>
             <tr>
                 <td>Resources: </td>
                 <td>
-                    <m:textEditor id="resources" value="#{bean.entry.resources}" />
+                    <m:textEditor id="resources" 
+                                  value="#{bean.entry.htmlData.resources}"
+                                  textValue="#{bean.entry.resources}" />
                 </td>
             </tr>
         </table>

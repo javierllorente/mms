@@ -16,6 +16,7 @@
 package com.javierllorente.mms.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityResult;
@@ -49,8 +50,8 @@ public class Entry implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public static final String FIND_BY_FULLTEXT = "findByFullText";
-    private static final int MIN_SIZE = 2;
-    private static final int MAX_SIZE = 1024;
+    public static final int MIN_SIZE = 2;
+    public static final int MAX_SIZE = 1024;
   
     @Id
     @NotNull
@@ -76,6 +77,9 @@ public class Entry implements Serializable {
     
     @Column(length = 500)
     private String resources;
+    
+    @Embedded
+    private HtmlData htmlData;
     
     public String getTerm() {
         return term;
@@ -123,6 +127,10 @@ public class Entry implements Serializable {
 
     public void setResources(String resources) {
         this.resources = resources;
+    }
+    
+    public HtmlData getHtmlData() {
+        return htmlData;
     }
 
     @Override

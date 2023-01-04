@@ -63,8 +63,14 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <description>Text editor value</description>
+            <description>Text editor value (HTML)</description>
             <name>value</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>Text editor value (text)</description>
+            <name>textValue</name>
             <required>true</required>
             <type>java.lang.String</type>
         </attribute>

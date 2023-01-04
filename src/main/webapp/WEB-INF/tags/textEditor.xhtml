@@ -56,7 +56,7 @@
         </div>
         <div id="#{id}_editor-container"></div>
         <h:inputHidden id="#{id}_html" value="#{value}" />
-        <h:inputHidden id="#{id}_text" />
+        <h:inputHidden id="#{id}_text" value="#{textValue}" />
         <script>
             var #{id}_quill = new Quill('##{id}_editor-container', {
                 modules: {

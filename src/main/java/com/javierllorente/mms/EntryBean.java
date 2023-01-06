@@ -16,6 +16,7 @@
 package com.javierllorente.mms;
 
 import com.javierllorente.mms.model.Entry;
+import com.javierllorente.mms.model.HtmlData;
 import com.javierllorente.mms.service.EntryService;
 import jakarta.inject.Named;
 import jakarta.faces.application.FacesMessage;
@@ -45,6 +46,7 @@ public class EntryBean implements Serializable {
     
     public void init() {
         entry = new Entry();
+        entry.setHtmlData(new HtmlData());
     }
     
     public void onLoad() {

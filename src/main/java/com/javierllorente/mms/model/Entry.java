@@ -133,6 +133,10 @@ public class Entry implements Serializable {
         return htmlData;
     }
 
+    public void setHtmlData(HtmlData htmlData) {
+        this.htmlData = htmlData;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

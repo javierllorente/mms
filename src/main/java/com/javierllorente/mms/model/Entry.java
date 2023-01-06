@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Javier Llorente <javier@opensuse.org>.
+ * Copyright 2022-2023 Javier Llorente <javier@opensuse.org>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,9 +23,12 @@ import jakarta.persistence.EntityResult;
 import jakarta.persistence.FieldResult;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.SqlResultSetMapping;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.Date;
 
 /**
  *
@@ -80,6 +83,22 @@ public class Entry implements Serializable {
     
     @Embedded
     private HtmlData htmlData;
+
+    @Column
+    private Date creationDate;
+    
+    @Column
+    private Date lastModified;
+    
+    @PrePersist
+    private void prePersist() {
+        creationDate = new Date();
+    }
+    
+    @PreUpdate
+    private void preUpdate() {
+        lastModified = new Date();
+    }
     
     public String getTerm() {
         return term;
@@ -135,6 +154,22 @@ public class Entry implements Serializable {
 
     public void setHtmlData(HtmlData htmlData) {
         this.htmlData = htmlData;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Date getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
     }
 
     @Override

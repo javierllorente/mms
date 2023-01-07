@@ -20,16 +20,19 @@
     <ui:define name="content">
         <h:panelGroup id="contentContainer" layout="block">
             <h:panelGroup id="entryContainer" rendered="#{not empty mindMapBean.term and not empty mindMapBean.entry.term}">
-                <h:panelGroup id="actionPanel" layout="block">
-                    <h:link outcome="edit">
-                        <i class="fa-solid fa-pen-to-square"></i> Edit
-                        <f:param name="entry" value="#{mindMapBean.entry.term}" />
-                    </h:link>
-                    <h:link outcome="delete">
-                        <i class="fa-solid fa-trash"></i> Delete
-                        <f:param name="entry" value="#{mindMapBean.entry.term}" />
-                    </h:link>
-                </h:panelGroup>
+                <div id="topPanel">
+                    Author: <i class="fa-solid fa-user"></i> #{mindMapBean.entry.user.username}
+                    <span id="actionPanel">
+                        <h:link outcome="edit">
+                            <i class="fa-solid fa-pen-to-square"></i> Edit
+                            <f:param name="entry" value="#{mindMapBean.entry.term}" />
+                        </h:link>
+                        <h:link outcome="delete">
+                            <i class="fa-solid fa-trash"></i> Delete
+                            <f:param name="entry" value="#{mindMapBean.entry.term}" />
+                        </h:link>
+                    </span>
+                </div>
                 <m:mindMap id="entry" value="#{mindMapBean.entry}" />
             </h:panelGroup>
             <h:panelGroup id="notFoundContainer" layout="block" 

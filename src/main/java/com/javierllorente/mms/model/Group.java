@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Javier Llorente <javier@opensuse.org>.
+ * Copyright 2022-2023 Javier Llorente <javier@opensuse.org>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,12 @@ package com.javierllorente.mms.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -34,23 +33,13 @@ import java.io.Serializable;
 public class Group implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
-    
     private String groupname;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
+    private List<User> users;
 
     public String getGroupname() {
         return groupname;
@@ -60,19 +49,18 @@ public class Group implements Serializable {
         this.groupname = groupname;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
-    
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (groupname != null ? groupname.hashCode() : 0);
         return hash;
     }
 
@@ -83,7 +71,7 @@ public class Group implements Serializable {
             return false;
         }
         Group other = (Group) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.groupname == null && other.groupname != null) || (this.groupname != null && !this.groupname.equals(other.groupname))) {
             return false;
         }
         return true;
@@ -91,7 +79,7 @@ public class Group implements Serializable {
 
     @Override
     public String toString() {
-        return "com.javierllorente.mms.model.Group[ id=" + id + " ]";
+        return "com.javierllorente.mms.model.Group[ groupname=" + groupname + " ]";
     }
     
 }

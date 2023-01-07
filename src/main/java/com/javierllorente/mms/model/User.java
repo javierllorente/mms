@@ -23,8 +23,10 @@ import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -54,8 +56,12 @@ public class User implements Serializable {
 //    @CollectionTable(name = "MMS_GROUP", joinColumns = @JoinColumn(name = "GROUPS", referencedColumnName = "USERNAME"))
 //    @CollectionTable(name = "MMS_GROUP")
 //    private final List<String> groups = new ArrayList<>();
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "user")
-    private final List<Group> groups = new ArrayList<>();
+//    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @JoinTable(name = "MMS_USER_GROUP",
+            joinColumns = @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME"),
+            inverseJoinColumns = @JoinColumn(name = "GROUPNAME", referencedColumnName = "GROUPNAME"))
+    private Group group;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Entry> entries;
@@ -76,17 +82,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public Group getGroup() {
+        return group;
     }
 
-//    public Group getGroup() {
-//        return group;
-//    }
-
-//    public void setGroup(Group group) {
-//        this.group = group;
-//    }
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 
     public List<Entry> getEntries() {
         return entries;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Javier Llorente <javier@opensuse.org>.
+ * Copyright 2022-2023 Javier Llorente <javier@opensuse.org>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ public class UserService {
         entityManager.persist(user);
     }
     
-    public User search(String username) {
+    public User find(String username) {
         return entityManager.find(User.class, username);
     }
     

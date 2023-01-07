@@ -22,6 +22,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EntityResult;
 import jakarta.persistence.FieldResult;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -83,7 +85,11 @@ public class Entry implements Serializable {
     
     @Embedded
     private HtmlData htmlData;
-
+    
+    @ManyToOne
+    @JoinColumn(name = "author", nullable = false)
+    private User user;
+    
     @Column
     private Date creationDate;
     
@@ -154,6 +160,14 @@ public class Entry implements Serializable {
 
     public void setHtmlData(HtmlData htmlData) {
         this.htmlData = htmlData;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getCreationDate() {

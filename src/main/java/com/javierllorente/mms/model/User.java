@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Javier Llorente <javier@opensuse.org>.
+ * Copyright 2022-2023 Javier Llorente <javier@opensuse.org>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +57,9 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER, mappedBy = "user")
     private final List<Group> groups = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Entry> entries;
+
     public String getUsername() {
         return username;
     }
@@ -85,6 +87,14 @@ public class User implements Serializable {
 //    public void setGroup(Group group) {
 //        this.group = group;
 //    }
+
+    public List<Entry> getEntries() {
+        return entries;
+    }
+    
+    public void setEntries(List<Entry> entries) {
+        this.entries = entries;
+    }
 
     @Override
     public int hashCode() {

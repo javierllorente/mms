@@ -50,13 +50,6 @@ public class User implements Serializable {
     @NotNull(message = "Password cannot be empty")
     private String password;
 
-//    @CollectionTable()
-//    @ElementCollection()
-//    @CollectionTable(name = "MMS_GROUP", joinColumns = @JoinColumn(name = "USERNAME"))
-//    @CollectionTable(name = "MMS_GROUP", joinColumns = @JoinColumn(name = "GROUPS", referencedColumnName = "USERNAME"))
-//    @CollectionTable(name = "MMS_GROUP")
-//    private final List<String> groups = new ArrayList<>();
-//    @ManyToOne(cascade = CascadeType.PERSIST)
     @ManyToOne
     @JoinTable(name = "MMS_USER_GROUP",
             joinColumns = @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME"),

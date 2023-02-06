@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Javier Llorente <javier@opensuse.org>.
+ * Copyright 2022-2023 Javier Llorente <javier@opensuse.org>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,15 @@
  */
 package com.javierllorente.mms;
 
+import com.javierllorente.mms.model.User;
+import com.javierllorente.mms.service.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Inject;
 import java.security.Principal;
+import java.util.List;
 
 /**
  *
@@ -34,6 +38,10 @@ public class UserBean {
      */
     
     private String currentUser;
+    private List<User> users;
+    
+    @Inject
+    private UserService userService;
     
     public UserBean() {
     }
@@ -45,6 +53,10 @@ public class UserBean {
         currentUser = (principal == null) ? "" : principal.getName();
     }
     
+    public void loadUsers() {
+        users = userService.findAll();
+    }
+    
     public String getCurrentUser() {
         return currentUser;
     }
@@ -52,6 +64,10 @@ public class UserBean {
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "index?faces-redirect=true";
+    }
+
+    public List<User> getUsers() {
+        return users;
     }
     
 }

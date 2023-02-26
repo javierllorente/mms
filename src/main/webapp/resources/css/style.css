@@ -227,6 +227,90 @@ connection {
 }
 
 
+/* Admin */
+
+#adminPanel {
+    margin: auto;
+    width: 825px;
+    padding-top: 50px;
+}
+
+.adminButton {
+/*    display: block;
+    width: 100px;*/
+}
+
+.adminButton + .adminButton {
+    margin-left: 20px;
+}
+
+.adminButton a:link, .adminButton a:visited {
+    background-color: #ebebeb;
+    color: #525252;
+    text-decoration: none;
+    padding: 4px 8px 4px 8px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.adminButton a:hover {
+    color: black;
+}
+
+#usersTable th, #usersTable td {
+    width: 200px;
+    text-align: left;
+}
+
+#usersTable tr:hover {
+    background-color: #ddd;
+}
+
+#userContainer {
+    margin-top: 40px;
+    width: 800px;
+}
+
+#userFieldset {
+    width: 500px;
+    text-align: right;
+    border: 0px;
+}
+
+#userFieldset label {
+    margin-right: 10px;
+}
+
+#userFieldset input:not([type=submit]), #userFieldset #passwordCell {
+    width: 300px;
+    display: inline-block;
+}
+
+#userFieldset input[readonly] {
+    background-color: #ededed;
+}
+
+#deleteUserPanel {
+    text-align: right;
+}
+
+#deleteUserForm\:actionButton {
+    font-size: 16px;
+    background-color: #ebebeb;
+    color: #999999;
+    text-decoration: none;
+    padding: 4px 8px 4px 8px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.submitButton {
+    font-size: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
 /* Footer */
 
 #copyright {
@@ -318,11 +402,13 @@ connection {
     margin: 0;
     padding: 0;
 }
-#userForm a:link, a:visited {
+
+#userBarPanel a:link, a:visited {
     text-decoration: none;
     color: black;
 }
-#userForm a:hover {
+
+#userBarPanel a:hover {
     filter: opacity(60%);
 }
 

@@ -27,13 +27,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 
 /**
  *
  * @author Javier Llorente <javier@opensuse.org>
  */
-//@Entity(name = "mms_user")
 @Entity
 @Table(name = "MMS_USER")
 @NamedQuery(name = User.FIND_ALL_USERS, query = "SELECT u from User u")
@@ -44,10 +47,12 @@ public class User implements Serializable {
     public static final String FIND_USER = "findUser";
     
     @Id
-    @NotNull
+    @NotBlank(message = "Username cannot be empty")
+    @Size(max = 30, message = "Username is too long (>30)")
+    @Pattern(regexp = "^[a-zA-Z0-9._-]{3,}$", message = "Username format is invalid")
     private String username;
     
-    @NotNull(message = "Password cannot be empty")
+    @NotBlank(message = "Password cannot be empty")
     private String password;
 
     @ManyToOne
@@ -55,6 +60,16 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME"),
             inverseJoinColumns = @JoinColumn(name = "GROUPNAME", referencedColumnName = "GROUPNAME"))
     private Group group;
+    
+    @NotBlank(message = "Name cannot be empty")
+    private String name;
+    
+    @NotBlank(message = "Surname cannot be empty")
+    private String surname;
+    
+    @NotNull(message = "Email cannot be empty")
+    @Email(message = "Email format is invalid")
+    private String email;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<Entry> entries;
@@ -81,6 +96,30 @@ public class User implements Serializable {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Entry> getEntries() {

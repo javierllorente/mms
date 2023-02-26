@@ -75,5 +75,34 @@
             <type>java.lang.String</type>
         </attribute>
     </tag>
+    <tag>
+        <description>Form for adding/editing users</description>
+        <tag-name>userForm</tag-name>
+        <source>tags/userForm.xhtml</source>
+        <attribute>
+            <description>Form ID</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>Form backing bean</description>
+            <name>bean</name>
+            <required>true</required>
+            <type>com.javierllorente.mms.RegisterBean</type>
+        </attribute>
+        <attribute>
+            <description>Form action</description>
+            <name>action</name>
+            <required>true</required>
+            <type>java.lang.String</type>         
+        </attribute>
+        <attribute>
+            <description>Form rendered attribute</description>
+            <name>rendered</name>
+            <required>false</required>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
 </facelet-taglib>
 

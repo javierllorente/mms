@@ -1,0 +1,57 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:m="http://javierllorente.com/mms/tags"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:param name="param" value="#{bean}" />
+    <ui:param name="method" value="#{action}" />    
+    <h:form id="#{id}" rendered="#{empty rendered or rendered}">
+        <fieldset id="userFieldset">
+            <div id="usernameField" class="field">
+                <h:outputLabel for="username" value="Username:" />
+                <h:inputText id="username" value="#{bean.user.username}" 
+                             readonly="#{action ne 'add'}" />
+            </div>
+            <br />
+            <h:panelGroup id="passwordPanel" class="field" layout="block" 
+                          rendered="#{action eq 'update'}">
+                <span id="passwordCell">
+                    <span class="adminButton">
+                        <h:link id="passwordLink" outcome="password" >
+                            <f:param name="username" value="#{bean.user.username}" />
+                            <i class="fa-solid fa-key"></i> Change password
+                        </h:link>
+                    </span>
+                </span>
+                <br />
+                <br />
+            </h:panelGroup>
+            <h:panelGroup id="passwordField" class="field" layout="block" 
+                          rendered="#{action ne 'update'}">
+                <h:outputLabel for="passwordInput" value="Password:" />
+                <h:inputSecret id="passwordInput" value="#{bean.user.password}" />
+                <br />
+                <br />
+            </h:panelGroup>
+            <h:panelGroup id="userData" rendered="#{action ne 'changePassword'}">
+                <br />
+                <div id="nameField" class="field">
+                    <h:outputLabel for="name" value="Name:" />
+                    <h:inputText id="name" value="#{bean.user.name}" />
+                </div>
+                <br />
+                <div id="surnameField" class="field">
+                    <h:outputLabel for="surname" value="Surname:" />
+                    <h:inputText id="surname" value="#{bean.user.surname}" />
+                </div>
+                <br />
+                <div id="emailField" class="field">
+                    <h:outputLabel for="email" value="Email:" />
+                    <h:inputText id="email" value="#{bean.user.email}" />
+                </div>
+                <br />
+            </h:panelGroup>
+            <h:commandButton id="submitButton" value="Submit" class="submitButton"
+                             action="#{param[method]}" />
+        </fieldset>
+    </h:form>
+</ui:composition>

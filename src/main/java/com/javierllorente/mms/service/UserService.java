@@ -35,6 +35,17 @@ public class UserService {
         entityManager.persist(user);
     }
     
+    public void update(User user) {
+        entityManager.merge(user);
+    }
+    
+    public void remove(User user) {
+        if (!entityManager.contains(user)) {
+            user = entityManager.merge(user);
+        }
+        entityManager.remove(user);
+    }
+    
     public User find(String username) {
         return entityManager.find(User.class, username);
     }

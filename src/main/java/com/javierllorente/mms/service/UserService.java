@@ -50,7 +50,7 @@ public class UserService {
         return entityManager.find(User.class, username);
     }
     
-    public List<User> findAllUsers() {
-        return entityManager.createNamedQuery(User.FIND_ALL_USERS).getResultList();
+    public List<User> findAll() {
+        return entityManager.createNamedQuery(User.FIND_ALL).getResultList();
     }
 }

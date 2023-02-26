@@ -39,11 +39,11 @@ import java.util.List;
  */
 @Entity
 @Table(name = "MMS_USER")
-@NamedQuery(name = User.FIND_ALL_USERS, query = "SELECT u from User u")
+@NamedQuery(name = User.FIND_ALL, query = "SELECT u from User u")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static final String FIND_ALL_USERS = "findAllUsers";
+    public static final String FIND_ALL = "findAll";
     public static final String FIND_USER = "findUser";
     
     @Id

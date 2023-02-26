@@ -4,8 +4,10 @@
     <div id="userBar">
         <span id="userLogo">MMS</span>
         <span id="userBarPanel">
-            <i class="fa-regular fa-user"></i>
-            <h:outputText id="currentUser" value="#{userBean.currentUser} " />
+            <h:link id="userLink" outcome="/user/index">
+                <i class="fa-regular fa-user"></i>
+                <h:outputText id="currentUser" value="#{userBean.currentUser}" />
+            </h:link>
             <h:form id="userForm">
                 <h:commandLink id="logOutLink" styleClass="fa-solid fa-arrow-right-from-bracket" 
                                action="#{userBean.logout}" />

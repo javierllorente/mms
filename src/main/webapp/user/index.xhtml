@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/adminTemplate.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:m="http://javierllorente.com/mms/tags">
+    <ui:define name="title">User profile</ui:define>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewAction action="#{updateUserBean.init}" />
+        </f:metadata>
+    </ui:define>
+    <ui:define name="content">
+        <h:panelGroup id="userContainer" layout="block">
+            <h:messages id="messages" />
+            <m:userForm id="updateUserForm" bean="#{updateUserBean}" action="update" 
+                        rendered="#{not empty updateUserBean.user.username}" />
+        </h:panelGroup>
+    </ui:define>
+</ui:composition>

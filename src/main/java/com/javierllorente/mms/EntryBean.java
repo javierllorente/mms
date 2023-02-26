@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Javier Llorente <javier@opensuse.org>.
+ * Copyright 2022-2023 Javier Llorente <javier@opensuse.org>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Inject;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -46,6 +47,7 @@ public class EntryBean implements Serializable {
 
     private Entry entry;
     private String term;
+    private List<Entry> entries;
     /**
      * Creates a new instance of EntryBean
      */
@@ -69,8 +71,16 @@ public class EntryBean implements Serializable {
         }
     }
     
+    public void loadEntries() {
+        entries = entryService.findAll();
+    }
+    
     public Entry getEntry() {
         return entry;
+    }
+
+    public List<Entry> getEntries() {
+        return entries;
     }
     
     public String getTerm() {

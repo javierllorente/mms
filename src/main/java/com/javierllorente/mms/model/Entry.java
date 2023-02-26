@@ -25,6 +25,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.SqlResultSetMapping;
@@ -50,11 +51,13 @@ import java.util.Date;
                 @FieldResult(name = "context", column = "CONTEXT")})
         }
 )
+@NamedQuery(name = Entry.FIND_ALL, query = "SELECT e FROM Entry e")
 
 public class Entry implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public static final String FIND_BY_FULLTEXT = "findByFullText";
+    public static final String FIND_ALL = "findAll";
     public static final int MIN_SIZE = 2;
     public static final int MAX_SIZE = 1024;
   

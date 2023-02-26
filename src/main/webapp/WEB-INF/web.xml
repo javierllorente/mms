@@ -43,9 +43,19 @@
             <url-pattern>/add.xhtml</url-pattern>
             <url-pattern>/edit.xhtml</url-pattern>
             <url-pattern>/delete.xhtml</url-pattern>
+            <url-pattern>/user/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin pages</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
 <!--    <security-role>

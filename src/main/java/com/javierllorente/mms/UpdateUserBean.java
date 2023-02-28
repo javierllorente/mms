@@ -27,6 +27,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HexFormat;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,6 +47,7 @@ public class UpdateUserBean implements Serializable {
     
     private User user;
     private String username;
+    private List<User> users;
 
     /**
      * Creates a new instance of UpdateUserBean
@@ -65,6 +67,10 @@ public class UpdateUserBean implements Serializable {
             }
         }
     }
+    
+    public void loadUsers() {
+        users = userService.findAll();
+    }
 
     public String getUsername() {
         return username;
@@ -72,11 +78,14 @@ public class UpdateUserBean implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-    
+    }    
 
     public User getUser() {
         return user;
+    }
+    
+    public List<User> getUsers() {
+        return users;
     }
     
     private String sha256(String text) {

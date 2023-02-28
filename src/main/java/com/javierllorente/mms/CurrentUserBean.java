@@ -25,28 +25,28 @@ import java.security.Principal;
  *
  * @author Javier Llorente <javier@opensuse.org>
  */
-@Named(value = "userBean")
+@Named(value = "currentUserBean")
 @RequestScoped
-public class UserBean {
+public class CurrentUserBean {
     
     /**
-     * Creates a new instance of UserBean
+     * Creates a new instance of CurrentUserBean
      */
     
-    private String currentUser;
+    private String username;
     
-    public UserBean() {
+    public CurrentUserBean() {
     }
     
     @PostConstruct
     public void init() {
         FacesContext context = FacesContext.getCurrentInstance();
         Principal principal = context.getExternalContext().getUserPrincipal();
-        currentUser = (principal == null) ? "" : principal.getName();
+        username = (principal == null) ? "" : principal.getName();
     }
     
-    public String getCurrentUser() {
-        return currentUser;
+    public String getUsername() {
+        return username;
     }
     
     public String logout() {

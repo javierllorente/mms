@@ -43,7 +43,7 @@ public class UpdateUserBean implements Serializable {
     private UserService userService;
     
     @Inject
-    private UserBean userBean;
+    private CurrentUserBean currentUserBean;
     
     private User user;
     private String username;
@@ -56,7 +56,7 @@ public class UpdateUserBean implements Serializable {
     }
     
     public void init() {
-        user = userService.find(userBean.getCurrentUser());
+        user = userService.find(currentUserBean.getUsername());
     }
 
     public void onLoad() {

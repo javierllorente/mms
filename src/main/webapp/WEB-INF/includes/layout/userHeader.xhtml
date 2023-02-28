@@ -6,11 +6,11 @@
         <span id="userBarPanel">
             <h:link id="userLink" outcome="/user/index">
                 <i class="fa-regular fa-user"></i>
-                <h:outputText id="currentUser" value="#{userBean.currentUser}" />
+                <h:outputText id="currentUser" value="#{currentUserBean.username}" />
             </h:link>
             <h:form id="userForm">
                 <h:commandLink id="logOutLink" styleClass="fa-solid fa-arrow-right-from-bracket" 
-                               action="#{userBean.logout}" />
+                               action="#{currentUserBean.logout}" />
             </h:form>
         </span>
     </div>

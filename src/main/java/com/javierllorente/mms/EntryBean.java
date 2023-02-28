@@ -43,7 +43,7 @@ public class EntryBean implements Serializable {
     private UserService userService;
     
     @Inject
-    private UserBean userBean;
+    private CurrentUserBean currentUserBean;
 
     private Entry entry;
     private String term;
@@ -55,7 +55,7 @@ public class EntryBean implements Serializable {
     }
     
     public void init() {
-        User user = userService.find(userBean.getCurrentUser());
+        User user = userService.find(currentUserBean.getUsername());
         entry = new Entry();
         entry.setUser(user);
         entry.setHtmlData(new HtmlData());

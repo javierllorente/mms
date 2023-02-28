@@ -56,8 +56,8 @@ import java.util.Date;
 public class Entry implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static final String FIND_BY_FULLTEXT = "findByFullText";
-    public static final String FIND_ALL = "findAll";
+    public static final String FIND_BY_FULLTEXT = "Entry.findByFullText";
+    public static final String FIND_ALL = "Entry.findAll";
     public static final int MIN_SIZE = 2;
     public static final int MAX_SIZE = 1024;
   

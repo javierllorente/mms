@@ -43,8 +43,8 @@ import java.util.List;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    public static final String FIND_ALL = "findAll";
-    public static final String FIND_USER = "findUser";
+    public static final String FIND_ALL = "User.findAll";
+    public static final String FIND_USER = "User.findUser";
     
     @Id
     @NotBlank(message = "Username cannot be empty")

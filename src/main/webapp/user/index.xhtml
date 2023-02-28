@@ -7,14 +7,14 @@
     <ui:define name="title">User profile</ui:define>
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewAction action="#{updateUserBean.init}" />
+            <f:viewAction action="#{userBean.init}" />
         </f:metadata>
     </ui:define>
     <ui:define name="content">
         <h:panelGroup id="userContainer" layout="block">
             <h:messages id="messages" />
-            <m:userForm id="updateUserForm" bean="#{updateUserBean}" action="update" 
-                        rendered="#{not empty updateUserBean.user.username}" />
+            <m:userForm id="updateUserForm" bean="#{userBean}" action="update" 
+                        rendered="#{not empty userBean.user.username}" />
         </h:panelGroup>
     </ui:define>
 </ui:composition>

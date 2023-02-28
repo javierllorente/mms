@@ -7,22 +7,22 @@
     <ui:define name="title">Admin console - Update user</ui:define>
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewParam id="userParam" name="username" value="#{updateUserBean.username}" 
+            <f:viewParam id="userParam" name="username" value="#{userBean.username}" 
                          required="true" requiredMessage="No username given" />
-            <f:viewAction action="#{updateUserBean.onLoad()}" />
+            <f:viewAction action="#{userBean.onLoad()}" />
         </f:metadata>
     </ui:define>
     <ui:define name="content">
         <h:panelGroup id="userContainer" layout="block">
-            <h:panelGroup id="deleteUserPanel" rendered="#{not empty updateUserBean.user.username}">               
+            <h:panelGroup id="deleteUserPanel" rendered="#{not empty userBean.user.username}">               
                 <span id="actionPanel">
                     <h:form id="deleteUserForm">
                         <h:commandLink id="actionButton" 
                                        onclick="return confirm('Do you really want to delete the user 
-                                           #{updateUserBean.username}?');"
-                                       action="#{updateUserBean.delete}" 
+                                           #{userBean.username}?');"
+                                       action="#{userBean.delete}" 
                                        disabled="#{empty userBean.currentUser 
-                                                   or userBean.currentUser eq updateUserBean.user.username}">
+                                                   or userBean.currentUser eq userBean.user.username}">
                             <f:ajax render="messages userContainer" />
                             <i class="fa-solid fa-trash"></i> Delete
                         </h:commandLink>
@@ -30,8 +30,8 @@
                 </span>
             </h:panelGroup>            
             <h:messages id="messages" />
-            <m:userForm id="updateUserForm" bean="#{updateUserBean}" action="update" 
-                        rendered="#{not empty updateUserBean.user.username}" />
+            <m:userForm id="updateUserForm" bean="#{userBean}" action="update" 
+                        rendered="#{not empty userBean.user.username}" />
         </h:panelGroup>
     </ui:define>
 </ui:composition>

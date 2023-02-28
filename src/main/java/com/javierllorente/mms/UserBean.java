@@ -35,9 +35,9 @@ import java.util.logging.Logger;
  *
  * @author Javier Llorente <javier@opensuse.org>
  */
-@Named(value = "updateUserBean")
+@Named(value = "userBean")
 @ViewScoped
-public class UpdateUserBean implements Serializable {
+public class UserBean implements Serializable {
     
     @Inject
     private UserService userService;
@@ -50,9 +50,9 @@ public class UpdateUserBean implements Serializable {
     private List<User> users;
 
     /**
-     * Creates a new instance of UpdateUserBean
+     * Creates a new instance of UserBean
      */
-    public UpdateUserBean() {
+    public UserBean() {
     }
     
     public void init() {
@@ -95,7 +95,7 @@ public class UpdateUserBean implements Serializable {
             HexFormat hex = HexFormat.of();
             return hex.formatHex(hash);  
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(UpdateUserBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

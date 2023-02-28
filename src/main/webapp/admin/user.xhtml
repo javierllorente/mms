@@ -21,8 +21,8 @@
                                        onclick="return confirm('Do you really want to delete the user 
                                            #{userBean.username}?');"
                                        action="#{userBean.delete}" 
-                                       disabled="#{empty userBean.currentUser 
-                                                   or userBean.currentUser eq userBean.user.username}">
+                                       disabled="#{empty currentUserBean.username 
+                                                   or currentUserBean.username eq userBean.user.username}">
                             <f:ajax render="messages userContainer" />
                             <i class="fa-solid fa-trash"></i> Delete
                         </h:commandLink>

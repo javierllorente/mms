@@ -1,6 +1,7 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:m="http://javierllorente.com/mms/tags">
+                xmlns:m="http://javierllorente.com/mms/tags"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:param name="param" value="#{bean}" />
     <ui:param name="method" value="#{action}" />
     <h:form id="#{id}" rendered="#{empty rendered or rendered}">
@@ -54,6 +55,14 @@
                     <m:textEditor id="resources" 
                                   value="#{bean.entry.htmlData.resources}"
                                   textValue="#{bean.entry.resources}" />
+                </td>
+            </tr>
+            <tr>
+                <td>Tags: </td>
+                <td>
+                    <h:selectManyListbox id="entryTags" value="#{bean.entry.tags}" class="tagList">
+                        <f:selectItems id="tags" value="#{tagBean.tags}" var="tag" itemLabel="#{tag.name}" />
+                    </h:selectManyListbox>
                 </td>
             </tr>
         </table>

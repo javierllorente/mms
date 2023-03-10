@@ -1,5 +1,6 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:outputStylesheet name="css/quill.css" />
     <h:outputScript library="webjars" name="jquery/3.6.1/dist/jquery.js" target="head" />
     <h:outputScript library="webjars" name="github-com-slavede-jquery-connections/1.1.1/jquery.connections.js" target="head" />
@@ -35,4 +36,12 @@
             </div>
         </div>
     </h:panelGroup>
+    <div id="tags">
+        <ui:repeat value="#{value.tags}" var="tag">
+            <h:link outcome="/tag">
+                <i class="fa-solid fa-tag"></i> #{tag.name}
+                <f:param name="tag" value="#{tag.name}" />
+            </h:link>
+        </ui:repeat>
+    </div>
 </ui:composition>

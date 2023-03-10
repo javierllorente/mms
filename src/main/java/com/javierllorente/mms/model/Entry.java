@@ -23,6 +23,8 @@ import jakarta.persistence.EntityResult;
 import jakarta.persistence.FieldResult;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedNativeQuery;
 import jakarta.persistence.NamedQuery;
@@ -32,6 +34,7 @@ import jakarta.persistence.SqlResultSetMapping;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -51,12 +54,22 @@ import java.util.Date;
                 @FieldResult(name = "context", column = "CONTEXT")})
         }
 )
+@NamedNativeQuery(name = Entry.FIND_BY_TAG, query = "SELECT ENTRY.TERM FROM ENTRY "
+        + "INNER JOIN ENTRY_TAG ON ENTRY.TERM = ENTRY_TAG.TERM WHERE ENTRY_TAG.TAG = ?",
+        resultSetMapping = "EntryTagResults")
+@SqlResultSetMapping(name = "EntryTagResults",
+        entities = {
+            @EntityResult(entityClass = Entry.class, fields = {                
+                @FieldResult(name = "term", column = "TERM")})
+        }
+)
 @NamedQuery(name = Entry.FIND_ALL, query = "SELECT e FROM Entry e")
 
 public class Entry implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public static final String FIND_BY_FULLTEXT = "Entry.findByFullText";
+    public static final String FIND_BY_TAG = "Entry.findByTag";
     public static final String FIND_ALL = "Entry.findAll";
     public static final int MIN_SIZE = 2;
     public static final int MAX_SIZE = 1024;
@@ -98,6 +111,12 @@ public class Entry implements Serializable {
     
     @Column
     private Date lastModified;
+    
+    @ManyToMany
+    @JoinTable(name = "ENTRY_TAG",
+            joinColumns = @JoinColumn(name = "TERM", referencedColumnName = "TERM"),
+            inverseJoinColumns = @JoinColumn(name = "TAG", referencedColumnName = "NAME"))
+    private List<Tag> tags;
     
     @PrePersist
     private void prePersist() {
@@ -187,6 +206,14 @@ public class Entry implements Serializable {
 
     public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 
     @Override

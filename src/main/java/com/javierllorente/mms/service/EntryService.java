@@ -55,6 +55,11 @@ public class EntryService {
                 .setParameter(1, term).getResultList();
     }
     
+    public List<Entry> findByTag(String tag) {
+        return em.createNamedQuery(Entry.FIND_BY_TAG, Entry.class)
+                .setParameter(1, tag).getResultList();
+    }
+    
     public List<Entry> findAll() {
         return em.createNamedQuery(Entry.FIND_ALL, Entry.class).getResultList();
     }

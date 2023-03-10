@@ -310,6 +310,53 @@ connection {
     padding-right: 20px;
 }
 
+#tagTable input[type="text"] {
+    font-size: 16px;
+    width: 250px;
+    max-width: 250px;
+}
+
+#tagTable select {
+    width: 100%;
+}
+
+#tagTable td {
+    vertical-align: top;
+}
+
+#tagTable input[type="submit"] {
+    width: 100px;
+}
+
+.tagList {
+    font-size: 16px;
+    width: 250px;
+    height: 200px;
+}
+
+#tags {
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+#tags a:link, #tags a:visited {
+    background-color: #ebebeb;
+    color: #525252;
+    text-decoration: none;
+    padding: 4px 8px 4px 8px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+#tags a:hover {
+    color: black;
+}
+
+#container {
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
 
 /* Footer */
 

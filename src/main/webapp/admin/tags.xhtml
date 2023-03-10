@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/adminTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">Admin console - Tags</ui:define>
+    <ui:define name="metadata">
+        <h:outputScript library="webjars" name="jquery/3.6.1/dist/jquery.js" target="head" />
+        <script>
+            function validateTag() {
+                if ($("#addTagForm\\:tagInput").val().trim() === "") { 
+                    alert('Empty tag'); 
+                    return false; 
+                }
+            }
+            
+            function confirmDelete() {
+                return confirm('Do you really want to delete the selected tag(s)?');
+            }
+        </script>
+    </ui:define>
+    <ui:define name="content">
+        <div id="container">
+            Tags
+
+            <h:messages id="messages" />
+
+            <table id="tagTable">
+                <tr>
+                    <h:form id="addTagForm">
+                        <td>
+                            <h:inputText id="tagInput" value="#{tagBean.tagName}">
+                            </h:inputText>
+                        </td>
+                        <td>
+                            <h:commandButton id="addTagButton" value="Add" action="#{tagBean.add}" 
+                                             onclick="return validateTag()"
+                                             class="submitButton" />
+                        </td>
+                    </h:form>
+                </tr>
+                <tr>
+                    <h:form id="deleteTagForm">
+                        <td>
+                            <h:selectManyListbox id="selectedTags" value="#{tagBean.selectedTags}" 
+                                                 class="tagList">
+                                <f:ajax event="change" render="deleteTagButton" />
+                                <f:selectItems id="tags" value="#{tagBean.tags}" var="tag" 
+                                               itemLabel="#{tag.name}" itemValue="#{tag}" />
+                            </h:selectManyListbox>
+                        </td>
+                        <td>
+                            <h:commandButton id="deleteTagButton" value="Delete" 
+                                             action="#{tagBean.delete}" class="submitButton" 
+                                             disabled="#{empty tagBean.selectedTags}" 
+                                             onclick="return confirmDelete();" />
+                        </td>
+                    </h:form>
+                </tr>
+            </table>
+        </div>
+    </ui:define>
+</ui:composition>

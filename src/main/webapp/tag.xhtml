@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/templates/searchTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">Mind Map Tags</ui:define>
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="tag" value="#{tagBean.tagName}" />
+            <f:viewAction action="#{tagBean.onLoad}" />
+        </f:metadata>
+    </ui:define>
+    <ui:define name="content">
+        <div id="container">
+            Entries with tag #{tagBean.tagName}:
+            <h:dataTable value="#{tagBean.entries}" var="entry">
+                <h:column>
+                    <h:link value="#{entry.term}" outcome="/mindmap">
+                        <f:param name="entry" value="#{entry.term}" />
+                    </h:link>
+                </h:column>
+            </h:dataTable>
+        </div>
+    </ui:define>
+</ui:composition>

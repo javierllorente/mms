@@ -20,6 +20,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.PreRemove;
 import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
@@ -42,6 +43,13 @@ public class Tag implements Serializable {
     
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
     private List<Entry> entries;
+    
+    @PreRemove
+    private void preRemove() {
+        for (Entry e : entries) {
+            e.getTags().remove(this);
+        }
+    }
 
     public String getName() {
         return name;

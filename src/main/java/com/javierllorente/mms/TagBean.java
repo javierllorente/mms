@@ -43,6 +43,7 @@ public class TagBean implements Serializable {
     @Inject EntryService entryService;
 
     private String tagName;
+    private String justAddedTag;
     private List<Tag> tags;
     private List<Tag> selectedTags;
     private List<Entry> entries;
@@ -100,6 +101,7 @@ public class TagBean implements Serializable {
             tag.setName(tagName);
             tagService.add(tag);
             tags.add(tag);
+            justAddedTag = tagName;
             tagName = "";
             message = "Tag \"" + tag.getName() + "\" has been added successfuly";
         } else {
@@ -109,9 +111,16 @@ public class TagBean implements Serializable {
     }
     
     public void delete() {
-        String deletedTags = "";
+        String deletedTags = "";  
         for (Iterator<Tag> iterator = selectedTags.iterator(); iterator.hasNext();) {
             Tag selectedTag = iterator.next();
+            // * Keep entities in sync *
+            // Make sure a just-added tag is synchronized with DB if user adds it to
+            // an entry and afterwards deletes the tag, so that entry is not left with
+            // a reference to an existent tag. Needed if Web page is not reloaded
+            if (justAddedTag != null) {
+                selectedTag = tagService.find(selectedTag.getName());
+            }            
             tagService.remove(selectedTag);
             deletedTags += selectedTag.getName();
             if (iterator.hasNext()) {

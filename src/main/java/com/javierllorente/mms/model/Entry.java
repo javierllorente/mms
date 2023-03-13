@@ -15,6 +15,7 @@
  */
 package com.javierllorente.mms.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import java.io.Serializable;
@@ -112,7 +113,7 @@ public class Entry implements Serializable {
     @Column
     private Date lastModified;
     
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "ENTRY_TAG",
             joinColumns = @JoinColumn(name = "TERM", referencedColumnName = "TERM"),
             inverseJoinColumns = @JoinColumn(name = "TAG", referencedColumnName = "NAME"))
@@ -126,6 +127,11 @@ public class Entry implements Serializable {
     @PreUpdate
     private void preUpdate() {
         lastModified = new Date();
+        for (Tag tag : tags) {
+            if (!tag.getEntries().contains(this)) {
+                tag.getEntries().add(this);
+            }
+        }
     }
     
     public String getTerm() {

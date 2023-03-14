@@ -11,15 +11,22 @@
         </f:metadata>
     </ui:define>
     <ui:define name="content">
-        <div id="container">
-            Entries with tag #{tagBean.tagName}:
-            <h:dataTable value="#{tagBean.entries}" var="entry">
-                <h:column>
-                    <h:link value="#{entry.term}" outcome="/mindmap">
-                        <f:param name="entry" value="#{entry.term}" />
-                    </h:link>
-                </h:column>
-            </h:dataTable>
-        </div>
+        <h:panelGroup id="container" layout="block">
+            <h:messages id="messages" />
+            <h:panelGroup id="entriesWithTagPanel" rendered="#{not empty tagBean.tagName 
+                                                               and not empty tagBean.entries}">
+                Entries with tag "#{tagBean.tagName}":
+                <h:dataTable value="#{tagBean.entries}" var="entry">
+                    <h:column>
+                        <h:link value="#{entry.term}" outcome="/mindmap">
+                            <f:param name="entry" value="#{entry.term}" />
+                        </h:link>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+            <h:panelGroup id="noTagPanel" rendered="#{empty tagBean.tagName}">
+                No tag given
+            </h:panelGroup>
+        </h:panelGroup>
     </ui:define>
 </ui:composition>

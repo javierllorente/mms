@@ -55,10 +55,14 @@ public class TagBean implements Serializable {
 
     public void onLoad() {
         if (tagName != null && !tagName.isBlank()) {
-            entries = entryService.findByTag(tagName);
-            
-            if (entries == null) {
-                addMessage("No entries found with tag \"" + tagName);
+            Tag tag = tagService.find(tagName);
+            if (tag == null) {
+                addMessage("Tag \"" + tagName + "\" not found");
+            } else {
+                entries = entryService.findByTag(tagName);
+                if (entries == null) {
+                    addMessage("No entries found with tag \"" + tagName + "\"");
+                }
             }
         }
     }

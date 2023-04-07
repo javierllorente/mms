@@ -7,11 +7,11 @@
     <h:outputScript name="js/mindmap.js" target="head" />
     <h:panelGroup id="#{id}" styleClass="ql-editor">
         <div class="sideColumn">
-            <span id="definitionToggle" class="child">- Definition</span>
+            <span id="definitionToggle" class="child">- #{bundle['mindMap.definition']}</span>
             <div id="definition">
                 <h:outputText value="#{value.htmlData.definition}" escape="false" />
             </div>
-            <span id="translationToggle" class="child">+ Translation</span>
+            <span id="translationToggle" class="child">+ #{bundle['mindMap.translation']}</span>
             <div id="translation">
                 <h:outputText value="#{value.htmlData.translation}" escape="false" />
             </div>
@@ -22,15 +22,15 @@
             </div>
         </div>
         <div class="sideColumn">
-            <span id="contextToggle" class="child">+ Context</span>
+            <span id="contextToggle" class="child">+ #{bundle['mindMap.context']}</span>
             <div id="context">
                 <h:outputText value="#{value.htmlData.context}" escape="false" />
             </div>
-            <span id="expertNetworkToggle" class="child">+ Expert network</span>
+            <span id="expertNetworkToggle" class="child">+ #{bundle['mindMap.expertNetwork']}</span>
             <div id="expertNetwork">
                 <h:outputText value="#{value.htmlData.expertNetwork}" escape="false" />
             </div>
-            <span id="resourcesToggle" class="child">+ Resources</span>
+            <span id="resourcesToggle" class="child">+ #{bundle['mindMap.resources']}</span>
             <div id="resources">
                 <h:outputText value="#{value.htmlData.resources}" escape="false" />
             </div>

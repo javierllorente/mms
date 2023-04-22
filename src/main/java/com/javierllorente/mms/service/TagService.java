@@ -42,9 +42,14 @@ public class TagService {
         em.remove(tag);
     }
     
+    public void update(Tag tag) {
+        em.merge(tag);
+    }
+    
     public Tag find(String name) {
         return em.find(Tag.class, name);
     }
+    
     public List<Tag> findAll() {
         return em.createNamedQuery(Tag.FIND_ALL, Tag.class).getResultList();
     }

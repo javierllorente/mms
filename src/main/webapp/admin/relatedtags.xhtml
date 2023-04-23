@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../WEB-INF/templates/adminTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <ui:define name="title">Admin console - Related tags</ui:define>
+        <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="tag" value="#{relatedTagBean.tagName}" />
+            <f:viewAction action="#{relatedTagBean.onLoad}" />
+        </f:metadata>
+        <h:outputScript library="webjars" name="jquery/3.6.1/dist/jquery.js" target="head" />
+        <script>
+            function validateTag() {
+                if ($("#relatedTagsForm\\:selectedTags").val().length === 0) { 
+                    alert('Please select a tag'); 
+                    return false; 
+                }
+            }
+        </script>
+    </ui:define>
+    <ui:define name="content">
+        <h:panelGroup id="container" layout="block">
+            <h:form id="tagSearch">
+                <h:inputText id="tagInput" value="#{relatedTagBean.tagName}" a:autofocus="true" />
+                <h:commandButton id="tagButton" value="Search" action="#{relatedTagBean.onLoad}">
+                    <f:param name="tag" value="#{relatedTagBean.tagName}" />
+                </h:commandButton>
+            </h:form>
+            <h:messages id="messages" globalOnly="true" />
+            
+            <h:panelGroup id="entriesWithTagPanel" rendered="#{not empty relatedTagBean.tagName 
+                                                               and not empty relatedTagBean.tag}">
+                <br/><br/>Related tags for #{relatedTagBean.tagName}
+                
+                <table id="tagTable">
+                    <tr>
+                        <td>Available tags</td>
+                        <td></td>
+                        <td>Related tags</td>
+                    </tr>
+                    <tr>
+                        <h:form id="relatedTagsForm">
+                            <td>
+                                <h:selectManyListbox id="selectedTags" value="#{relatedTagBean.selectedTags}" 
+                                                     class="tagList">
+                                    <f:selectItems id="availableTags" value="#{relatedTagBean.availableTags}" var="tag" 
+                                                   itemLabel="#{tag.name}" itemValue="#{tag}" />
+                                </h:selectManyListbox>
+                            </td>
+                            <td>
+                                <h:commandButton id="addTagButton" value="Add +" action="#{relatedTagBean.add}" 
+                                                 onclick="return validateTag()"
+                                                 class="submitButton" />
+                                <br/>
+                                <h:commandButton id="deleteTagButton" value="- Delete" 
+                                                 action="#{relatedTagBean.delete}" class="submitButton" 
+                                                 disabled="#{empty relatedTagBean.selectedRelatedTags}" />
+                            </td>
+                            <td>
+                                <h:selectManyListbox id="selectedRelatedTags" value="#{relatedTagBean.selectedRelatedTags}" 
+                                                     class="tagList">
+                                    <f:ajax event="change" render="deleteTagButton" />
+                                    <f:selectItems id="relatedTags" value="#{relatedTagBean.tag.relatedTags}" var="tag" 
+                                                   itemLabel="#{tag.name}" itemValue="#{tag}" />
+                                </h:selectManyListbox>
+                            </td>
+                        </h:form>
+                    </tr>
+                </table>
+            </h:panelGroup>
+        </h:panelGroup>
+    </ui:define>
+</ui:composition>

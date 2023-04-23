@@ -18,6 +18,8 @@ package com.javierllorente.mms.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.PreRemove;
@@ -43,11 +45,24 @@ public class Tag implements Serializable {
     
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
     private List<Entry> entries;
+ 
+    @ManyToMany
+    @JoinTable(name = "RELATED_TAG",
+            joinColumns = @JoinColumn(name = "RELATED_TAG"),
+            inverseJoinColumns = @JoinColumn(name = "PARENT_TAG"))
+    private List<Tag> parentTags;
     
+    @ManyToMany(mappedBy = "parentTags")
+    private List<Tag> relatedTags;
+    
+        
     @PreRemove
     private void preRemove() {
         for (Entry e : entries) {
             e.getTags().remove(this);
+        }
+        for (Tag t : parentTags) {
+            t.getRelatedTags().remove(this);
         }
     }
 
@@ -65,6 +80,22 @@ public class Tag implements Serializable {
 
     public void setEntries(List<Entry> entries) {
         this.entries = entries;
+    }
+
+    public List<Tag> getParentTags() {
+        return parentTags;
+    }
+
+    public void setParentTags(List<Tag> parentTags) {
+        this.parentTags = parentTags;
+    }
+
+    public List<Tag> getRelatedTags() {
+        return relatedTags;
+    }
+
+    public void setRelatedTags(List<Tag> relatedTags) {
+        this.relatedTags = relatedTags;
     }
 
     @Override

@@ -38,7 +38,7 @@
     </h:panelGroup>
     <div id="tags">
         <ui:repeat value="#{value.tags}" var="tag">
-            <h:link outcome="/tag">
+            <h:link outcome="/tagmap">
                 <i class="fa-solid fa-tag"></i> #{tag.name}
                 <f:param name="tag" value="#{tag.name}" />
             </h:link>

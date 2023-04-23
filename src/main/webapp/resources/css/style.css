@@ -227,6 +227,50 @@ connection {
 }
 
 
+
+/* Tag map */
+
+#tagMap {
+    display: table;
+}
+
+#tagMap #tagColumn {
+    width: 375px;
+    display: table-cell;
+}
+
+#tagMap #tagContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#tagBox {
+    min-width: 100px;
+    max-width: 200px;
+    max-height: 55px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.relatedTag {
+    width: 140px;
+    height: 35px;
+    display: block;
+    text-align: center;
+    margin-top: 100px;
+    background-color: lightblue;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+
 /* Admin */
 
 #adminPanel {
@@ -310,14 +354,14 @@ connection {
     padding-right: 20px;
 }
 
+#tagTable {
+    margin-top: 50px;
+}
+
 #tagTable input[type="text"] {
     font-size: 16px;
     width: 250px;
     max-width: 250px;
-}
-
-#tagTable select {
-    width: 100%;
 }
 
 #tagTable td {

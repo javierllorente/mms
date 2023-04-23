@@ -1,0 +1,32 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:outputScript library="webjars" name="jquery/3.6.1/dist/jquery.js" target="head" />
+    <h:outputScript library="webjars" name="github-com-slavede-jquery-connections/1.1.1/jquery.connections.js" target="head" />
+    <h:outputScript name="js/tagmap.js" target="head" />
+    <h:panelGroup id="#{id}">
+        <ui:repeat id="relatedTagsLeft" value="#{value.relatedTags}" size="#{value.relatedTags.size() gt 1 ? 2 : 1}" 
+                   var="tag" rendered="#{value.relatedTags.size() gt 0}">
+            <span id="#{tag.name}" class="relatedTag">
+                <h:link outcome="/tagmap">
+                    <i class="fa-solid fa-tag"></i> #{tag.name}
+                    <f:param name="tag" value="#{tag.name}" />
+                </h:link>
+            </span>
+        </ui:repeat>
+        <div id="tagColumn">
+            <div id="tagContainer">
+                <div id="tagBox"><h:outputText value="#{value.name}" /></div>
+            </div>
+        </div>
+        <ui:repeat id="relatedTagsRight" value="#{value.relatedTags}" offset="2" 
+                   var="tag" rendered="#{value.relatedTags.size() gt 1}">
+            <span id="#{tag.name}" class="relatedTag">
+                <h:link outcome="/tagmap">
+                    <i class="fa-solid fa-tag"></i> #{tag.name}
+                    <f:param name="tag" value="#{tag.name}" />
+                </h:link>
+            </span>
+        </ui:repeat>
+    </h:panelGroup>
+</ui:composition>

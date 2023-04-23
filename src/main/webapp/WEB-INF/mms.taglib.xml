@@ -53,6 +53,23 @@
         </attribute>
     </tag>
     <tag>
+        <description>Tag map</description>
+        <tag-name>tagMap</tag-name>
+        <source>tags/tagMap.xhtml</source>
+        <attribute>
+            <description>Tag map ID</description>
+            <name>id</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <description>Tag map data model</description>
+            <name>value</name>
+            <required>true</required>
+            <type>com.​javierllorente.​mms.​model.Tag</type>
+        </attribute>
+    </tag>
+    <tag>
         <description>Rich text editor</description>
         <tag-name>textEditor</tag-name>
         <source>tags/textEditor.xhtml</source>

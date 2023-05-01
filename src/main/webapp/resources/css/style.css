@@ -282,7 +282,6 @@ connection {
 /* Admin */
 
 #adminPanel {
-    margin: auto;
     width: 825px;
     padding-top: 50px;
 }

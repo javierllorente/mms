@@ -4,31 +4,33 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:define name="title">Admin console</ui:define>
     <ui:define name="content">
-        <div id="adminPanel">
-            <span class="adminButton">
-                <h:link outcome="users">
-                    <i class="fa-solid fa-users fa-2xl"></i>
-                    Users
-                </h:link>
-            </span>
-            <span class="adminButton">
-                <h:link outcome="entries">
-                    <i class="fa-solid fa-file-lines fa-2xl"></i>
-                    Entries
-                </h:link>
-            </span>
-            <span class="adminButton">
-                <h:link outcome="tags">
-                    <i class="fa-solid fa-tag fa-2xl"></i>
-                    Tags
-                </h:link>
-            </span>
-            <span class="adminButton">
-                <h:link outcome="relatedtags">
-                    <i class="fa-solid fa-tags fa-2xl"></i>
-                    Related tags
-                </h:link>
-            </span>
+        <div id="contentContainer">
+            <div id="adminPanel">
+                <span class="adminButton">
+                    <h:link outcome="users">
+                        <i class="fa-solid fa-users fa-2xl"></i>
+                        Users
+                    </h:link>
+                </span>
+                <span class="adminButton">
+                    <h:link outcome="entries">
+                        <i class="fa-solid fa-file-lines fa-2xl"></i>
+                        Entries
+                    </h:link>
+                </span>
+                <span class="adminButton">
+                    <h:link outcome="tags">
+                        <i class="fa-solid fa-tag fa-2xl"></i>
+                        Tags
+                    </h:link>
+                </span>
+                <span class="adminButton">
+                    <h:link outcome="relatedtags">
+                        <i class="fa-solid fa-tags fa-2xl"></i>
+                        Related tags
+                    </h:link>
+                </span>
+            </div>
         </div>
     </ui:define>
 </ui:composition>

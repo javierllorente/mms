@@ -9,6 +9,13 @@ body {
 }
 
 
+.logo a:link, .logo a:visited {
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+}
+
 /* Homepage */
 
 #homepageTop {
@@ -23,6 +30,7 @@ body {
 
 #homepageLogo {
     font-size: 60px;
+    color: green;
 }
 
 #homepage {

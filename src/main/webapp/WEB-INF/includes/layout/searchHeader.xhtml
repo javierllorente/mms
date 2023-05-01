@@ -4,7 +4,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <div id="searchBox">
         <h:form id="searchForm">
-            <span id="searchLogo">MMS</span> <h:inputText id="searchInput" value="#{searchBean.term}" />
+            <span id="searchLogo" class="logo"><a href=".">MMS</a></span> <h:inputText id="searchInput" value="#{searchBean.term}" />
             <h:commandButton id="searchButton" value="Search" action="#{searchBean.search()}">
                 <f:param name="query" value="#{searchBean.term}" />
             </h:commandButton>

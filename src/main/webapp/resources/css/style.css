@@ -511,10 +511,9 @@ connection {
     filter: opacity(60%);
 }
 
-#blueBar {
+#userSpacer {
     width: 100%;
     height: 40px;
-    background-color: lightblue;
     margin-bottom: 15px;
 }
 
